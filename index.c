@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
 {
     // open the file
     FILE *in_file = fopen('text-fr.txt', "r");
+    
     // read the file size
     struct stat sb;
     stat('text-fr.txt', &sb);
