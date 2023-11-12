@@ -12,7 +12,8 @@
 typedef struct {
     short id_salle; // valeur fixe
     unsigned short nb_porte; // valeur fixe 
-    unsigned short piege; // valeur aléatoire 
+    unsigned short piege; // valeur aléatoire
+    unsigned short monstre; // valeur aléatoire
     unsigned short coffre; // booleen + valeur aléatoire
     unsigned short reserve; // booleen + valeur fixe peut apparaître que dans une seule salle 
     unsigned short boss; // booleen + vrai si la salle est la reserve
@@ -32,6 +33,10 @@ void valeur_aleatoire_salle(salle *s) {
     result = rand() % 5;
     if (result == 0) (*s).coffre = 1; // 1/5 que la valeur soit vrai
     else if (result != 0) (*s).coffre = 0; // 4/5 que la valeur soit fausse
+
+    result = rand() % 3;
+    if (result == 0) (*s).monstre = 1; 
+    else if (result != 0) (*s).monstre = 0;
 
     (*s).reserve = 0;
     (*s).boss = 0; 
@@ -130,9 +135,9 @@ void display_room(int nb_rooms) {
 
 
 void afficher_salle(salle room) {
-    printf("Salle %d-%d - Piege: %hu, Coffre: %hu, Nombre de portes : %hu, Boss : %hu, Reserve: %hu\n",
+    printf("Salle %d-%d - Piege: %hu, Coffre: %hu, Nombre de portes : %hu, adversaire : %hu, Boss : %hu, Reserve: %hu\n",
            (room.id_salle/MAX), (room.id_salle % MAX), room.piege,
-           room.coffre, room.nb_porte, room.boss, room.reserve);
+           room.coffre, room.nb_porte, room.monstre, room.boss, room.reserve);
 }
 
 void play_sound() {
@@ -194,6 +199,7 @@ void between_lines(int start, int end, char nom_ficher[30]) {
 }
 
 void displayIntroduction() {
+    printf("\n======================================================================\n\n");
     printf("| |  | ||  _  | ___ \\ |   |  _  \\ | |  | |/ _ \\ | ___ \\    /   |\n");
     printf("| |  | || | | | |_/ / |   | | | | | |  | / /_\\ \\| |_/ /   / /| |\n");
     printf("| |\\| || | | |    /| |   | | | | | |\\| |  _  ||    /   / /_| |\n");
@@ -201,14 +207,112 @@ void displayIntroduction() {
     printf(" \\/  \\/  \\___/\\_| \\_\\_____/___/    \\/  \\/\\_| |_/\\_| \\_|     |_/\n\n");
     printf("1. New Game\n");
     printf("2. Continue\n\n");
+    printf("======================================================================\n\n");
     printf("Choose an option by typing the corresponding number and press Enter:\n");
+
 }
+
+
+char *generateSentence(int type, const char *nom_fichier) {
+    int nbLine;
+    char *sentence = malloc(1024);
+
+    FILE *fichier = fopen(nom_fichier, "r");
+
+    if (fichier == NULL) {
+        fprintf(stderr, "Erreur lors de l'ouverture du fichier %s\n", nom_fichier);
+        exit(EXIT_FAILURE);
+    }
+
+    switch (type) {
+    case 1:
+        nbLine = rand() % (61 - 52 + 1) + 52;
+        sentence = recuperer_ligne(nom_fichier, nbLine);
+        break;
+
+    case 2:
+        nbLine = rand() % (49 - 40 + 1) + 40;
+        sentence = recuperer_ligne(nom_fichier, nbLine);
+        break;
+
+    case 3:
+        nbLine = rand() % (73 - 64 + 1) + 64;
+        sentence = recuperer_ligne(nom_fichier, nbLine);
+        break;
+
+    case 4:
+        nbLine = 76;  // Utilisation directe de la ligne 76 pour le cas 4
+        sentence = recuperer_ligne(nom_fichier, nbLine);
+        break;
+
+    case 5:
+        nbLine = rand() % (88 - 79 + 1) + 79;
+        sentence = recuperer_ligne(nom_fichier, nbLine);
+        break;
+
+    default:
+        fprintf(stderr, "Type invalide\n");
+        exit(EXIT_FAILURE);
+    }
+
+    fclose(fichier);
+    return sentence;
+}
+
+
+
+void create_room_folder(char *nameFolder, salle *room, char *langue) {
+    FILE *folder = fopen(nameFolder, "w");
+
+    if (folder == NULL) {
+        fprintf(stderr, "Erreur lors de la création du fichier %s\n", nameFolder);
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(folder, "You arrive in the room: %d\n", room->id_salle);
+
+    if (room->boss != 1) {
+        if (room->piege == 1) {
+            char *trapSentence = generateSentence(1, langue);
+            fprintf(folder, "%s\n", trapSentence);
+            free(trapSentence);
+        }
+
+        if (room->monstre == 1) {
+            char *monsterSentence = generateSentence(2, langue);
+            fprintf(folder, "%s\n", monsterSentence);
+            free(monsterSentence);
+        }
+
+        if (room->coffre == 1) {
+            char *chestSentence = generateSentence(3, langue);
+            fprintf(folder, "%s\n", chestSentence);
+            free(chestSentence);
+        }
+    } else {
+        char *bossSentence = generateSentence(4, langue);
+        fprintf(folder, "%s\n", bossSentence);
+        free(bossSentence);
+    }
+
+    if (room->piege != 1 && room->boss != 1 && room->monstre != 1) {
+        // Générer une phrase pour les salles vides (type 5)
+        char *emptyRoomSentence = generateSentence(5, langue);
+        fprintf(folder, "%s\n", emptyRoomSentence);
+        free(emptyRoomSentence);
+    }
+
+    
+
+    fclose(folder);
+}
+
 
 
 
 int main(int argc, char *argv[]) {
     int choose = 0, choice=0;
-    char sentence[100];
+    char sentence[100], room[10];
     tableau salles;
     char exit[10], langue[3]; // Augmente la taille de langue pour stocker "fr" ou "en"
     
@@ -265,11 +369,11 @@ int main(int argc, char *argv[]) {
 
         // Read introduction
         between_lines(1, 11, fichier);
-        
+
         // Informations of the first room
-        between_lines(31,32,fichier);
+        between_lines(28,29,fichier);
         display_room(5);
-        between_lines(34,37, fichier);
+        between_lines(31,34, fichier);
 
         free(allocation_fichier);
 
@@ -286,6 +390,14 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+
+        for (int i = 0; i < 25; i++) {
+        snprintf(room, sizeof(room), "room%d", i);
+
+        create_room_folder(room, &salles[i / MAX][i % MAX], "text-en.txt");
+        
+        
+    }
 
         scanf("%s", exit);
 

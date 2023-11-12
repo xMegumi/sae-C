@@ -34,3 +34,57 @@ The faint squeak of the door to your right and the mystery of the one below invi
 Each door promises an uncertain destiny. The bunker, now your war-torn kingdom, awaits your decision: right (r) or down (d).
 
 
+/// The rooms texts
+
+// enemies 
+A formidable humanoid robot emerges, ready to engage in battle.
+The air vibrates with tension as a robotic figure steps into view, revealing its mechanical features.
+Glowing eyes reveal the presence of a skilled human adversary, ready for confrontation.
+A mechanical creature approaches, gears whirring, indicating a potential robot opponent.
+You detect the whir of gears as a robot steps forward, prepared for combat.
+Hisses and mechanical sounds fill the air as a humanoid robot emerges as a threat.
+Servos whine as a robotic figure strides forward, prepared for a programmed battle.
+The ground vibrates with each step as a humanoid robot advances with hostile intent.
+A metallic silhouette emerges from the shadows, signaling the presence of a robotic adversary.
+The surroundings echo with the clanking of metal as a robot approaches, ready to attack.
+
+// traps
+Emerging into the room, a subtle hum fills the air, signaling the activation of a concealed trap.
+The atmosphere grows tense as you step into the room, and an unexpected gust of wind triggers a hidden mechanism.
+The room appears unassuming, but the sound of machinery echoes, hinting at a trap that activates upon entry.
+Shadows dance along the walls as you enter, and an eerie stillness is shattered by the sudden activation of a concealed danger.
+The metallic scent in the air intensifies as you progress into the room, and a trap is triggered, revealing the dangers within.
+Your footsteps reverberate through the space, and an unexpected shimmer catches your eye—the sign of a concealed trap activating.
+The atmosphere within the room becomes charged with tension, and the walls seem to shift as a hidden trap is triggered.
+A faint glow emanates from the surroundings, creating an unsettling ambiance that intensifies with the activation of a concealed danger.
+The room twists and turns unpredictably, and the air seems to crackle with anticipation as a hidden trap is triggered.
+As you enter the room, a faint clicking sound underscores the risk of triggering concealed traps, heightening the danger within.
+
+// chest 
+While exploring, you spot a hidden chest nearby.
+Unveiling a concealed chest, your discovery awaits.
+Amidst the remnants, a chest becomes visible, waiting to be opened.
+Your keen eyes reveal a chest, promising valuable spoils.
+A careful exploration leads to the discovery of a hidden chest.
+The surroundings reveal a mysterious chest, waiting to be opened.
+As the area unfolds, a chest emerges as a rewarding find.
+Hints from the defeated humanoid adversary lead to a concealed chest nearby.
+The surroundings become silent, revealing a chest as a token of discovery.
+Your keen exploration unveils a chest, promising valuable spoils.
+
+// boss
+You arrive in the provisions room, a formidable defender awaits – a colossal mutant dog, ready to guard its precious provisions. Be careful…
+
+// empty
+The room echoes with emptiness as you enter, having successfully gathered all available items.
+Having thoroughly explored, the once resource-filled room now stands barren and devoid of treasures.
+Empty shelves and cleared containers greet you, signaling your efficient pillaging of the room.
+Your previous thoroughness leaves the room stripped of any remaining items, a testament to your scavenging skills.
+Entering the room again, you find it void of any collectibles, evidence of your meticulous searching.
+The once-stocked room now bears the marks of your prior visit, devoid of any overlooked items.
+Having emptied the room during your previous visit, there is nothing left to collect as you enter.
+Echoes of your earlier endeavors resonate in the now-empty room, a testament to your resourcefulness.
+The room, once brimming with potential loot, is now a testament to your thorough exploration.
+Entering the room, you notice the absence of items, evidence that you've successfully claimed everything it had to offer.
+
+
