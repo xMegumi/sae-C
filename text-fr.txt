@@ -1,0 +1,31 @@
+En 3045, l’humanité a coexisté avec la technologie de pointe, vivant en harmonie avec les robots qui faisaient partie intégrante de la vie quotidienne. 
+Cependant, cette ère de paix a été brusquement interrompue par un conflit intense entre les États-Unis et la France, les deux nations dominantes qui gouvernaient le monde.
+Ce conflit a éclaté en une guerre mondiale, divisant la planète en deux factions : l’alliance américaine et l’alliance française.
+Après cinq ans de combats acharnés, les États-Unis, se sentant acculés, ont pris une décision draconienne en lançant des dizaines de bombes nucléaires. 
+En réponse, la France, anticipant la menace imminente, a réagi de la même manière, déclenchant une explosion cataclysmique qui a plongé le monde dans un état de radioactivité dévastatrice.
+Clairvoyants, les pays avaient construit d’innombrables bunkers à travers le monde pour se protéger de cette éventualité. 
+Le protagoniste, autrefois un combattant engagé dans la guerre, est maintenant confronté à la nécessité de survivre dans ce monde post-apocalyptique. 
+Initialement logé dans un bunker avec son équipe, les ressources diminuent rapidement. Son objectif principal est de s’aventurer à l’extérieur, de découvrir d’autres bunkers, et quand il les trouve, d’entrer pour saisir les précieuses provisions nécessaires à sa survie.
+Dans ce monde sans loi, la quête de la survie devient impitoyable. 
+Chacun lutte pour sa propre existence, et le joueur doit naviguer à travers des territoires dangereux, et faire face à des combats difficiles pour assurer sa place dans ce nouveau monde déchiré par la guerre et la radioactivité. 
+Vous êtes un de ces survivants, vous venez de trouver un bunker et vous décidez d’y aller.
+
+
+/// Bienvenue à la Quatrième Guerre mondiale 
+
+
+Quel est votre nom ?
+
+Tu vas jouer à la quatrième guerre mondiale.
+
+
+Sélectionnez d’abord votre alliance (France (f) ou américaine (a)) : 
+
+Je vois, êtes-vous un humain (h) ou un robot (r) : 
+
+
+#humain : Oh, je vois que tu as un bon cœur, tu as encore foi en l’humanité… Bienvenue sur le chemin de la sagesse
+
+#robot : La vie ne vous a pas épargné, je vois que vous avez perdu votre humanité, mais à l’intérieur de cette machine auriez-vous encore une once de sentiment?
+
+Vous arrivez dans la première salle et voyez la carte du bunker.

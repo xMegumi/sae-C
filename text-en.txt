@@ -1,0 +1,36 @@
+In the year 3045, humanity coexisted with advanced technology, living in harmony with robots that were an integral part of everyday life. 
+However, this era of peace was abruptly interrupted by an intense conflict between the United States and France, the two dominant nations that ruled the world.
+This dispute broke out into a world war, dividing the planet into two factions: the American alliance and the French alliance.
+After five years of fierce fighting, the United States, feeling cornered, made a draconian decision by launching dozens of nuclear bombs. 
+In response, France, anticipating the imminent threat, responded in the same way, triggering a cataclysmic explosion that plunged the world into a state of devastating radioactivity.
+Far-sighted, countries had built countless bunkers across the globe to protect themselves from this eventuality. 
+The protagonist, once a fighter engaged in war, is now faced with the need to survive in this post-apocalyptic world. 
+Initially housed in a bunker with his team, resources quickly dwindle. His main objective becomes to venture outside, to discover other bunkers, and when he finds them, to enter to seize the precious provisions necessary for his survival.
+In this now lawless world, the quest for survival becomes unforgiving. 
+Each one struggles for his own existence, and the player must navigate through dangerous territories, and face difficult fights to secure his place in this new world torn by war and radioactivity. 
+You are one of those survivors, you just found a bunker and you decide to go.
+
+
+What is your name ?
+
+You’re going to play world war 4.
+
+
+First, please select your alliance (France (f)  or American (a)) : 
+
+I see, are you a human (h) or a robot (r)  : 
+
+
+#human : Oh, I see that you have a good heart, you still have faith in humanity… Welcome to the path of wisdom
+
+#robot : Life hasn’t spared you, I see you’ve lost your humanity, but inside this machine would you still have an ounce of feeling ?
+
+Emerging from the shadows, your steps echo in the austere room of the bunker. 
+An old rusty desk sits in the center, but your eyes are drawn to a wall adorned with a plan of the complex.
+
+There are metal doors to your right and bottom. 
+The map, your only guide in this post-apocalyptic maze, raises questions. 
+The faint squeak of the door to your right and the mystery of the one below invite you to make a choice. 
+Each door promises an uncertain destiny. The bunker, now your war-torn kingdom, awaits your decision: right (r) or down (d).
+
+
