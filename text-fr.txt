@@ -11,9 +11,6 @@ Chacun lutte pour sa propre existence, et le joueur doit naviguer à travers des
 Vous êtes un de ces survivants, vous venez de trouver un bunker et vous décidez d’y aller.
 
 
-/// Bienvenue à la Quatrième Guerre mondiale 
-
-
 Quel est votre nom ?
 
 Tu vas jouer à la quatrième guerre mondiale.
@@ -24,8 +21,111 @@ Sélectionnez d’abord votre alliance (France (f) ou américaine (a)) :
 Je vois, êtes-vous un humain (h) ou un robot (r) : 
 
 
-#humain : Oh, je vois que tu as un bon cœur, tu as encore foi en l’humanité… Bienvenue sur le chemin de la sagesse
+Oh, je vois que tu as un bon cœur, tu as encore foi en l’humanité… Bienvenue sur le chemin de la sagesse
 
-#robot : La vie ne vous a pas épargné, je vois que vous avez perdu votre humanité, mais à l’intérieur de cette machine auriez-vous encore une once de sentiment?
+La vie ne vous a pas épargné, je vois que vous avez perdu votre humanité, mais à l’intérieur de cette machine auriez-vous encore une once de sentiment?
 
-Vous arrivez dans la première salle et voyez la carte du bunker.
+Émergeant des ombres, tes pas résonnent dans la pièce austère du bunker.
+Un vieux bureau rouillé trône au centre, mais tes yeux se posent sur un mur orné d'un plan du complexe.
+
+Il y a des portes en métal sur ta droite et en bas.
+La carte, ton seul guide dans ce labyrinthe post-apocalyptique, suscite des questions.
+Le léger grincement de la porte à ta droite et le mystère de celle en dessous t'invitent à faire un choix.
+Chaque porte promet un destin incertain. Le bunker, désormais ton royaume déchiré par la guerre, attend ta décision : droite (d) ou bas (b).
+
+
+
+
+// Ennemis
+Un redoutable robot humanoïde émerge, prêt à engager le combat.
+L'air vibre de tension alors qu'une figure robotique entre en vue, révélant ses caractéristiques mécaniques.
+Des yeux brillants révèlent la présence d'un adversaire humain doué, prêt pour la confrontation.
+Une créature mécanique s'approche, des engrenages vrombissant, indiquant un adversaire potentiellement robotique.
+Vous détectez le vrombissement des engrenages alors qu'un robot avance, prêt au combat.
+Des sifflements et des bruits mécaniques remplissent l'air alors qu'un robot humanoïde émerge en tant que menace.
+Des servomoteurs grondent alors qu'une figure robotique avance, prête pour un combat programmé.
+Le sol vibre à chaque pas alors qu'un robot humanoïde avance avec une intention hostile.
+Une silhouette métallique émerge des ombres, signalant la présence d'un adversaire robotique.
+Les environs résonnent du cliquetis du métal alors qu'un robot s'approche, prêt à attaquer.
+
+// Pièges
+En pénétrant dans la pièce, un léger bourdonnement remplit l'air, signalant l'activation d'un piège dissimulé.
+L'atmosphère devient tendue lorsque vous entrez dans la pièce, et une rafale de vent inattendue déclenche un mécanisme caché.
+La pièce semble anodine, mais le bruit de machines résonne, laissant entendre un piège qui s'active à l'entrée.
+Les ombres dansent le long des murs lorsque vous entrez, et un silence étrange est brisé par l'activation soudaine d'un danger dissimulé.
+L'odeur métallique dans l'air s'intensifie lorsque vous progressez dans la pièce, et un piège est déclenché, révélant les dangers à l'intérieur.
+Vos pas résonnent à travers l'espace, et un scintillement inattendu attire votre œil – signe de l'activation d'un piège dissimulé.
+L'atmosphère dans la pièce devient chargée de tension, et les murs semblent bouger alors qu'un piège caché est déclenché.
+Une lueur faible émane des environs, créant une ambiance dérangeante qui s'intensifie avec l'activation d'un danger dissimulé.
+La pièce tourne de manière imprévisible, et l'air semble crépiter d'anticipation alors qu'un piège caché est déclenché.
+En entrant dans la pièce, un léger bruit de clic souligne le risque de déclencher des pièges dissimulés, accentuant le danger à l'intérieur.
+
+// Coffre
+En explorant, vous repérez un coffre caché à proximité.
+En dévoilant un coffre dissimulé, votre découverte vous attend.
+Au milieu des restes, un coffre devient visible, attendant d'être ouvert.
+Vos yeux aiguisés révèlent un coffre, promettant un butin précieux.
+Une exploration minutieuse conduit à la découverte d'un coffre caché.
+Les environs révèlent un coffre mystérieux, attendant d'être ouvert.
+Au fur et à mesure que la zone se dévoile, un coffre émerge en tant que découverte gratifiante.
+Des indices de l'adversaire humanoïde vaincu conduisent à un coffre dissimulé à proximité.
+Les environs deviennent silencieux, révélant un coffre en tant que symbole de découverte.
+Votre exploration minutieuse dévoile un coffre, promettant un butin précieux.
+
+// Boss
+En entrant dans la salle des provisions, vous vous retrouvez face à un redoutable boss : un chien mutant colossal, prêt à défendre ses précieuses provisions. Soyez prudent...
+Dans la zone de stockage, un imposant humain mutant se dresse en tant que boss, prêt à protéger des provisions vitales. Faites attention...
+Lorsque vous entrez dans la salle de stockage, vous êtes accueilli par un gardien redoutable : un chat mutant massif, prêt à défendre ses précieuses provisions. Faites preuve de vigilance...
+En pénétrant dans la chambre des provisions, vous rencontrez un leader redoutable : une créature mutante imposante, prête à protéger ses provisions inestimables. Faites preuve de prudence...
+À votre arrivée dans le stock, vous êtes confronté à un boss redoutable : un humain mutant colossal, prêt à défendre des provisions cruciales. Restez sur vos gardes...
+Dans la salle de stockage, un gardien redoutable vous attend : un chat mutant gigantesque, prêt à protéger ses provisions essentielles. Faites preuve de prudence...
+En entrant dans la zone de stockage, vous faites face à un boss redoutable : une créature mutante imposante, prête à défendre ses précieuses provisions. Soyez attentif...
+En pénétrant dans la salle des provisions, vous rencontrez un leader redoutable : un chien mutant massif, prêt à protéger ses provisions vitales. Restez alerte...
+Dans la salle de stockage, un gardien redoutable se tient en tant que boss : un humain mutant colossal, prêt à protéger ses provisions inestimables. Faites attention...
+À votre arrivée dans le stock, vous êtes confronté à un boss redoutable : une créature mutante imposante, prête à défendre ses provisions essentielles. Soyez prudent...
+
+// Vide
+La pièce résonne de vide lorsque vous entrez, ayant rassemblé avec succès tous les objets disponibles.
+Après avoir exploré en profondeur, la pièce autrefois remplie de ressources est maintenant stérile et dépourvue de trésors.
+Des étagères vides et des contenants vidés vous accueillent, signalant votre pillage efficace de la pièce.
+Votre minutie précédente laisse la pièce dépouillée de tout objet restant, témoignage de vos compétences de fouille.
+En entrant à nouveau dans la pièce, vous la trouvez dépourvue de tout objet à collecter, preuve de votre recherche méticuleuse.
+La pièce autrefois remplie porte maintenant les marques de votre visite précédente, dépourvue de tout objet oublié.
+Ayant vidé la pièce lors de votre visite précédente, il ne reste rien à collecter lorsque vous entrez.
+Les échos de vos efforts antérieurs résonnent dans la pièce désormais vide, témoignant de votre ingéniosité.
+La pièce, autrefois remplie de butin potentiel, est maintenant le témoin de votre exploration minutieuse.
+En entrant dans la pièce, vous remarquez l'absence d'objets, preuve que vous avez réussi à récupérer tout ce qu'elle avait à offrir.
+
+// Choix direct
+Où veux-tu aller, en bas (b) ou à droite (d) ?
+Où veux-tu aller, en bas (b) ou à gauche (g) ?
+Où veux-tu aller, en haut (h) ou à droite (d) ?
+Où veux-tu aller, en haut (h) ou à gauche (g) ?
+Où veux-tu aller, en haut (h), en bas (b) ou à droite (d) ?
+Où veux-tu aller, en haut (h), en bas (b) ou à gauche (g) ?
+Où veux-tu aller, en bas (b), à gauche (g) ou à droite (d) ?
+Où veux-tu aller, en haut (h), à gauche (g) ou à droite (d) ?
+Où veux-tu aller, en bas (b), en haut (h), à gauche (g) ou à droite (d) ?
+
+// Défaite
+Tu es mort.
+Tu viens de perdre un cœur.
+Tu n'as plus qu'un seul cœur !
+Es-tu sûr(e) de vouloir partir ? (Tape 'quitter' pour sortir ou autre chose pour rejouer) :
+
+// Collecte d'objets
+Tu viens de récupérer une épée magnifique.
+Tu viens d'obtenir un cœur.
+
+
+
+
+// Combat
+Tu entres en combat avec ce monstre épique...
+Que veux-tu faire ?
+1. Fuir
+2. Combattre
+Tu as attaqué et tué le monstre !
+Tu as échoué à attaquer le monstre !
+Tu es tombé dans un piège !
+Vous arrivez dans la pièce : 

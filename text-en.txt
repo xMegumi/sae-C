@@ -13,17 +13,17 @@ You are one of those survivors, you just found a bunker and you decide to go.
 
 What is your name ?
 
-You’re going to play world war 4.
+You’re going to play world war 4. Welcome
 
 
-First, please select your alliance (France (f)  or American (a)) : 
+First, please select your alliance France (f)  or American (a) : 
 
 I see, are you a human (h) or a robot (r)  : 
 
 
-#human : Oh, I see that you have a good heart, you still have faith in humanity… Welcome to the path of wisdom
+Oh, I see that you have a good heart, you still have faith in humanity… Welcome to the path of wisdom
 
-#robot : Life hasn’t spared you, I see you’ve lost your humanity, but inside this machine would you still have an ounce of feeling ?
+Life hasn’t spared you, I see you’ve lost your humanity, but inside this machine would you still have an ounce of feeling ?
 
 Emerging from the shadows, your steps echo in the austere room of the bunker. 
 An old rusty desk sits in the center, but your eyes are drawn to a wall adorned with a plan of the complex.
@@ -73,7 +73,16 @@ The surroundings become silent, revealing a chest as a token of discovery.
 Your keen exploration unveils a chest, promising valuable spoils.
 
 // boss
-You arrive in the provisions room, a formidable defender awaits – a colossal mutant dog, ready to guard its precious provisions. Be careful…
+Upon entering the provisions room, you come face-to-face with a formidable boss: a colossal mutant dog, ready to defend its precious provisions. Be cautious...
+In the storage area, an imposing mutant human stands as the boss, prepared to protect vital provisions. Take heed...
+As you step into the storage room, you're greeted by a formidable guardian: a massive mutant cat, prepared to defend its precious provisions. Exercise vigilance...
+Entering the provisions chamber, you encounter a formidable leader: an imposing mutant creature, ready to protect its invaluable provisions. Exercise caution...
+Upon arrival in the stockroom, you're confronted by a formidable boss: a colossal mutant human, ready to defend crucial provisions. Stay on guard...
+In the storage room, a formidable guardian awaits: a gigantic mutant cat, prepared to protect its essential provisions. Exercise caution...
+Upon entering the storage area, you face a formidable boss: an imposing mutant creature, ready to defend its precious provisions. Be attentive...
+Stepping into the provisions room, you encounter a formidable leader: a massive mutant dog, prepared to protect its vital provisions. Stay alert...
+In the storage room, a formidable guardian stands as the boss: a colossal mutant human, ready to protect its invaluable provisions. Take heed...
+Upon arrival in the stockroom, you're faced with a formidable boss: an imposing mutant creature, ready to defend its essential provisions. Be cautious...
 
 // empty
 The room echoes with emptiness as you enter, having successfully gathered all available items.
@@ -87,4 +96,36 @@ Echoes of your earlier endeavors resonate in the now-empty room, a testament to 
 The room, once brimming with potential loot, is now a testament to your thorough exploration.
 Entering the room, you notice the absence of items, evidence that you've successfully claimed everything it had to offer.
 
+// direct choice
+Where do you want to go, down (d) or right (r)?
+Where do you want to go, down (d) or left (l)?
+Where do you want to go, up (u) or right (r)?
+Where do you want to go, up (u) or left (l)?
+Where do you want to go, up (u), down (d), or right (r)?
+Where do you want to go, up (u), down (d), or left (l)?
+Where do you want to go, down (d), left (l), or right (r)?
+Where do you want to go, up (u), left (l), or right (r)?
+Where do you want to go, down (d), up (u), left (l), or right (r)?
 
+// defeated 
+You are dead.
+You just lost a heart
+You only have one heart left!
+Are you sure you want to leave? ? (Type 'quit' to exit or anything else to play again):
+
+// Collect items
+You just picked up a magnificent sword
+You just obtained a heart
+
+
+
+
+// Fight
+You enter into battle with this epic monster...
+What do you want to do ?
+1. Run
+2. Fight
+You attacked and killed the monster !
+You failed to attack the monster !
+You've been caught in a trap !
+You arrive in the room : 
