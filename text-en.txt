@@ -52,7 +52,7 @@ The surroundings echo with the clanking of metal as a robot approaches, ready to
 Emerging into the room, a subtle hum fills the air, signaling the activation of a concealed trap.
 The atmosphere grows tense as you step into the room, and an unexpected gust of wind triggers a hidden mechanism.
 The room appears unassuming, but the sound of machinery echoes, hinting at a trap that activates upon entry.
-Shadows dance along the walls as you enter, and an eerie stillness is shattered by the sudden activation of a concealed danger.
+Shadows dance along the walls as you entrer, and an eerie stillness is shattered by the sudden activation of a concealed danger.
 The metallic scent in the air intensifies as you progress into the room, and a trap is triggered, revealing the dangers within.
 Your footsteps reverberate through the space, and an unexpected shimmer catches your eye—the sign of a concealed trap activating.
 The atmosphere within the room becomes charged with tension, and the walls seem to shift as a hidden trap is triggered.
@@ -85,7 +85,7 @@ In the storage room, a formidable guardian stands as the boss: a colossal mutant
 Upon arrival in the stockroom, you're faced with a formidable boss: an imposing mutant creature, ready to defend its essential provisions. Be cautious...
 
 // empty
-The room echoes with emptiness as you enter, having successfully gathered all available items.
+The room is empty
 Having thoroughly explored, the once resource-filled room now stands barren and devoid of treasures.
 Empty shelves and cleared containers greet you, signaling your efficient pillaging of the room.
 Your previous thoroughness leaves the room stripped of any remaining items, a testament to your scavenging skills.
@@ -116,16 +116,30 @@ Are you sure you want to leave? ? (Type 'quit' to exit or anything else to play 
 // Collect items
 You just picked up a magnificent sword
 You just obtained a heart
-
+Reached maximum lives
 
 
 
 // Fight
 You enter into battle with this epic monster...
 What do you want to do ?
-1. Run
-2. Fight
+1. Fight
+2. Run
 You attacked and killed the monster !
 You failed to attack the monster !
 You've been caught in a trap !
 You arrive in the room : 
+
+// chest
+Would you like to open the chest ?
+1. Yes 
+2. No
+
+You just hit the boss
+You killed the boss
+The monster dodged your attack
+Bravo! You have won 
+
+Do you want to skip the introduction ?
+1. Yes
+2. No
