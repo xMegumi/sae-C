@@ -16,7 +16,7 @@ Quel est votre nom ?
 Tu vas jouer à la quatrième guerre mondiale.
 
 
-Sélectionnez d’abord votre alliance (France (f) ou américaine (a)) : 
+Sélectionnez d’abord votre alliance France (f) ou américaine (a): 
 
 Je vois, êtes-vous un humain (h) ou un robot (r) : 
 
@@ -85,7 +85,7 @@ Dans la salle de stockage, un gardien redoutable se tient en tant que boss : un 
 À votre arrivée dans le stock, vous êtes confronté à un boss redoutable : une créature mutante imposante, prête à défendre ses provisions essentielles. Soyez prudent...
 
 // Vide
-La pièce résonne de vide lorsque vous entrez, ayant rassemblé avec succès tous les objets disponibles.
+La salle est vide
 Après avoir exploré en profondeur, la pièce autrefois remplie de ressources est maintenant stérile et dépourvue de trésors.
 Des étagères vides et des contenants vidés vous accueillent, signalant votre pillage efficace de la pièce.
 Votre minutie précédente laisse la pièce dépouillée de tout objet restant, témoignage de vos compétences de fouille.
@@ -123,9 +123,21 @@ Tu viens d'obtenir un cœur.
 // Combat
 Tu entres en combat avec ce monstre épique...
 Que veux-tu faire ?
-1. Fuir
-2. Combattre
+1. Combattre
+2. Fuir
 Tu as attaqué et tué le monstre !
 Tu as échoué à attaquer le monstre !
 Tu es tombé dans un piège !
 Vous arrivez dans la pièce : 
+
+// Coffre 
+Veux tu ouvrir le coffre ?
+1. Oui 
+2. Non
+
+Tu viens de frapper le boss
+Vous avez tué le boss
+Le boss a évité ton attaque
+Bravo! Vous avez gagné 
+
+Voulez-vous passer l’introduction ?
