@@ -1,3 +1,6 @@
+// Lorenzo Vandenkoornhuyse
+// Berar Chatrain 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
