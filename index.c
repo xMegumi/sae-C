@@ -249,12 +249,6 @@ void print_room(room r)
            r.chest, r.chest_content, r.door_count, r.monster, r.boss, r.reserve);
 }
 
-// Function to play a sound (emit a beep)
-void play_sound()
-{
-    printf("\a"); // Emit a control character to generate a beep
-}
-
 // Function to read a specific line from a file
 char *get_line(const char *filename, int desired_line_number)
 {
@@ -306,11 +300,9 @@ char *get_line(const char *filename, int desired_line_number)
 // Function to display content from specific lines in a file
 int between_lines(int start, int end, char filename[30])
 {
-    // Read the content of the file "filename" between the start and end
     for (int i = start; i <= end; i++)
     {
         display_text(get_line(filename, i));
-        // sleep(1);
     }
 }
 
@@ -478,6 +470,7 @@ position create_position(int row, int column)
     return *position_p;
 }
 
+// use to save the player
 void save_player(Player joueur)
 {
     
@@ -498,6 +491,7 @@ void save_player(Player joueur)
     }
 }
 
+// use to load the player
 Player load_player()
 {
     Player joueur; 
@@ -521,6 +515,7 @@ Player load_player()
     }
 }
 
+// use to save the room
 void save_room(room_array rooms) {
     FILE *file = fopen("rooms.dat", "wb"); 
 
@@ -532,6 +527,7 @@ void save_room(room_array rooms) {
     }
 }
 
+// use to load the rooms
 void load_room(room_array rooms) {
     FILE *file = fopen("rooms.dat", "rb"); 
 
@@ -687,10 +683,10 @@ void game_over(char language[11]) {
 int check_game_over(Player *player) {
     int output = 0;
     if (player->hearts == 0) {
-        output = 1; // Game Over
+        output = 1; 
     }
 
-    return output; // Pas de Game Over
+    return output; 
 }
 
 // Function to remove a heart from player (health decrement)
@@ -699,12 +695,12 @@ void remove_heart(Player *player, const char language[11]) {
     if (player->hearts > 0) {
         player->hearts -= 1;
         if (player->hearts == 1) {
-            printf("%s\n", get_line(language, 113)); // Afficher le message pour une seule vie restante
+            printf("%s\n", get_line(language, 113)); 
         }
     }
     
     if (player->hearts == 0) {
-        game_over(language); // Appeler la fonction game_over si le joueur n'a plus de vies
+        game_over(language); 
     }
 }
 
@@ -713,7 +709,7 @@ void add_heart(Player *player, const char language[11]) {
     if (player->hearts < MAX) {
         player->hearts += 1;
         if (player->hearts == MAX) {
-            printf("%s\n", get_line(language, 119)); // Show the MAX LIFE message
+            printf("%s\n", get_line(language, 119)); 
         }
     }
 }
@@ -736,7 +732,6 @@ int fight_monster(Player *player, room *room, char *language)
             {
 
             
-            // If there is a boss in the room display
             do {
                 printf("%s\n", get_line(language, 124));
                 printf("%s\n", get_line(language, 125));
@@ -745,14 +740,12 @@ int fight_monster(Player *player, room *room, char *language)
                 scanf("%i", &choice_monster);
             }while (choice_monster != 1 && choice_monster != 2);
 
-            // If choice of player is to run
             if(choice_monster == 2)
             {
                 output = 0;
                 break;
             }
 
-            // If choice of player is to fight
             if(choice_monster == 1 )
             {
                 srand(time(NULL));
@@ -788,7 +781,6 @@ int fight_boss(Player *player, room *room, char language[11]) {
 
     if (room->boss == 1) {
         while (room->boss != 0 && !check_game_over(player)) {
-            // Si un boss est présent dans la pièce, affichage
             show_health_bar(player->hearts);
 
             printf("%s\n", get_line(language, 125));
@@ -797,12 +789,10 @@ int fight_boss(Player *player, room *room, char language[11]) {
             scanf("%i", &choice_monster);
             getchar();
 
-            // Si le choix du joueur est de fuir
             if (choice_monster == 2) {
                 break;
             }
 
-            // Si le choix du joueur est de combattre
             if (choice_monster == 1) {
                 if (player->weapon == 1) {
                     prob_attack = rand() % 2;
@@ -871,7 +861,7 @@ void chest_content(Player *player, room *room, char *language)
 
 
 
-
+// used to be able to set a time when typing the word for the trap
 int attendreSaisie(const char *filename) {
     int output = 0;
 
@@ -898,6 +888,7 @@ int attendreSaisie(const char *filename) {
     return output;
 }
 
+// generate a word for the trap
 char *generate_word_trap(const char *filename) {
     int line_number;
     char *sentence = malloc(1024 * sizeof(char)); // Allocation de mémoire pour la phrase
@@ -918,7 +909,7 @@ char *generate_word_trap(const char *filename) {
 }
 
 
-
+// Allows to launch the mechanics of the trap
 int trap_game(const char *filename) {
     char *word = generate_word_trap(filename);
     display_text(get_line(filename, 150));
@@ -1111,7 +1102,25 @@ char *get_language(const char nom[3])
     return languages;
 }
 
+// use to have the position of the boss
+position find_boss_position(room_array rooms) {
+    position boss_position;
 
+    for (int i = 0; i < MAX; i++) {
+        for (int j = 0; j < MAX; j++) {
+            if (rooms[i][j].boss == 1) {
+                boss_position.row = i;
+                boss_position.column = j;
+                return boss_position;
+            }
+        }
+    }
+
+    
+    boss_position.row = -1;
+    boss_position.column = -1;
+    return boss_position;
+}
 
 
 // Function to play the game
@@ -1125,11 +1134,9 @@ int play_game(char lang[3])
     const char *file = "text-en.txt";  
     FILE *in_file = fopen(file, "r");
     
-
     srand(time(NULL)); 
 
     do {
-
 
         if (strcmp(lang, "fr") == 0 || strcmp(lang, "FR") == 0) {
             file = "text-fr.txt";
@@ -1143,22 +1150,18 @@ int play_game(char lang[3])
             return 0;
         }
 
-
-        // Read the size of the file
         struct stat sb;
         stat(file, &sb);
-
-        // Allocate the file
         char *file_allocation = malloc(sb.st_size);
 
-        // Display menu
+
         while (1)
         {
             do {
             display_introduction(lang);
         
             if (scanf("%i", &game_choice) != 1) {
-                // Si l'entrée n'est pas un entier, nettoyez le flux d'entrée
+                
                 while (getchar() != '\n'); 
             }
 
@@ -1174,22 +1177,8 @@ int play_game(char lang[3])
             snprintf(folder, sizeof(folder), "room%d", i);
             create_room_folder(folder, &rooms[i / MAX][i % MAX], get_language(lang));
         }
+        
 
-        // Affichage des salles si demandé
-        /*
-        printf("Do you want to show the rooms? (1 for yes, 0 for no): ");
-        scanf("%i", &user_choice);
-
-        if (user_choice == 1) {
-            for (int i = 0; i < MAX; i++) {
-                for (int j = 0; j < MAX; j++) {
-                    print_room(rooms[i][j]);
-                }
-            }
-        }
-        */
-
-        // Boucle pour changer de salle jusqu'à la fin du jeu
         while(1) {
             printf("%s\n", get_line(get_language(lang), 143));
             printf("%s\n", get_line(get_language(lang), 144));
@@ -1222,19 +1211,19 @@ int play_game(char lang[3])
             protocol_room(&room_name, &rooms[new_player.player_position.row][new_player.player_position.column], &new_player, get_language(lang));
         }
 
-        // Affichage du joueur et libération de la mémoire
         free(file_allocation);
 
-        // Création des dossiers pour chaque salle
+        
         
                 break;
 
             case 2:
-                
-                new_player = load_player();
                 load_room(rooms);
-                show_player(new_player);
-                while (!check_game_over(&new_player) ) {
+                new_player = load_player();
+                position_boss = find_boss_position(rooms);
+                display_room(new_player.player_position.row, new_player.player_position.column);
+
+                while (!check_game_over(&new_player) && rooms[position_boss.row][position_boss.column].boss == 1) {
                     change_room(&new_player, get_language(lang), rooms);
                     sprintf(room_name, "room%d", (new_player.player_position.row * MAX) + new_player.player_position.column);
                     protocol_room(&room_name, &rooms[new_player.player_position.row][new_player.player_position.column], &new_player, get_language(lang));
@@ -1251,9 +1240,7 @@ int play_game(char lang[3])
             
         }
 
-        
-
-        scanf("%s", exit); // Pour sortir de la boucle do-while
+        scanf("%s", exit); 
 
     } while (strcmp(exit, "quit") != 0 && strcmp(exit, "quitter") != 0);
 
@@ -1281,7 +1268,7 @@ int main(int argc, char *argv[])
         play_game(lang);    
 
         printf("%s\n", get_line(get_language(lang), 114));
-        scanf("%9s", exit); // Pour éviter tout dépassement de tampon
+        scanf("%9s", exit);
 
     } while (strcmp(exit, "quit") != 0 && strcmp(exit, "quitter") != 0);
 
