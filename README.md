@@ -65,4 +65,4 @@ Pour plonger dans l'aventure, compilez le fichier index.c et c'est parti ! 😊
 
 🍀 Bonne chance et merci d'avoir parcouru ce readme.
 
-Crédits pour les auteurs : Lorenzo Vandenkoornhuyse et Berat Chatrain
+Crédits pour les auteurs : Lorenzo Vandenkoornhuyse et Berat Sirin
