@@ -27,9 +27,6 @@ Game tip: The weapon is the key to winning, but it's a discovery for players to 
 
 Eliminate the final boss to claim victory 🏆!
 
-Thank you for reading!
-Good luck in **World War 4**!
-
 🌍 **World War 4 : Une Épopée de Survie**
 
 In a world shattered by chaos, where the lines between reality and fiction blur, World War 4 calls you to the heart of the Fourth World War. The United States and France, once allies, now grapple in a brutal conflict. Skies resonate with bomb explosions, and the earth trembles under destruction's weight.
@@ -60,8 +57,10 @@ Nous l'affichons, puis nous donnons un temps au joueur pour réécrire le même 
 Défi difficile : génération automatique de la carte de manière aléatoire.
 Explication : la carte et les salles se génèrent de manière aléatoire à chaque fois que le jeu est lancé. Nous avons fait ceci avec la génération de fichier texte aléatoire contenant le contenu de la salle pour toutes les salles.*
 
-Comment exécuter notre jeu ?
+🚀 Comment lancer notre jeu ?
 
-Pour pouvoir jouer à notre jeu, il suffit de compiler le fichier index.c et le tour est joué.
-Vous pouvez maintenant jouer à notre jeu ! 
-Bonne chance et merci d'avoir lu ce readme.
+Pour plonger dans l'aventure, compilez le fichier index.c et c'est parti ! 😊
+
+🕹️ Maintenant, vous pouvez profiter pleinement de notre jeu !
+
+🍀 Bonne chance et merci d'avoir parcouru ce readme.
