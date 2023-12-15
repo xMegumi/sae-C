@@ -97,15 +97,15 @@ The room, once brimming with potential loot, is now a testament to your thorough
 Entering the room, you notice the absence of items, evidence that you've successfully claimed everything it had to offer.
 
 // direct choice
-Where do you want to go, down (d) or right (r)?
-Where do you want to go, down (d) or left (l)?
-Where do you want to go, up (u) or right (r)?
-Where do you want to go, up (u) or left (l)?
-Where do you want to go, up (u), down (d), or right (r)?
-Where do you want to go, up (u), down (d), or left (l)?
-Where do you want to go, down (d), left (l), or right (r)?
-Where do you want to go, up (u), left (l), or right (r)?
-Where do you want to go, down (d), up (u), left (l), or right (r)?
+Where do you want to go, down (d) or right (r)? ('q' to quit)
+Where do you want to go, down (d) or left (l)? ('q' to quit)
+Where do you want to go, up (u) or right (r)? ('q' to quit)
+Where do you want to go, up (u) or left (l)? ('q' to quit)
+Where do you want to go, up (u), down (d), or right (r)? ('q' to quit)
+Where do you want to go, up (u), down (d), or left (l)? ('q' to quit)
+Where do you want to go, down (d), left (l), or right (r)? ('q' to quit)
+Where do you want to go, up (u), left (l), or right (r)? ('q' to quit)
+Where do you want to go, down (d), up (u), left (l), or right (r)? ('q' to quit)
 
 // defeated 
 You are dead.
@@ -143,3 +143,31 @@ Bravo! You have won
 Do you want to skip the introduction ?
 1. Yes
 2. No
+
+You punch the monster, but your fist bounces off it !
+
+// trap words
+You need to type this word to avoid the trap :
+You took too long to get the word !
+You managed to dodge the trap !
+You typed the word incorrectly !
+M1r@cl3s
+H@rm0n!c
+V1ct0r!y
+S3ns@t!0
+Ch@rm!ng
+R@v!sh!n
+T3r1f!c
+D3l!ght!
+Qu@l!ty!
+J0v!@lty
+L0y@lty!
+T@ct!c@l
+F@bul0us
+V!rtu0s0
+S1mpl3st
+
+Enter any letter to stand up :
+Invalid direction. Please enter a valid direction.
+
+Player saved. End of the game.
