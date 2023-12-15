@@ -1,5 +1,5 @@
 // Lorenzo Vandenkoornhuyse
-// Berar Chatrain 
+// Berat Chatrain 
 
 #include <stdio.h>
 #include <stdlib.h>
