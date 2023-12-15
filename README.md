@@ -39,22 +39,22 @@ In World War 4, survival instincts are tested. Choices you make will determine y
 
 *Défi facile : gérer des évenements aléatoires (comme l'aparition de pièges ou monstres dans les salles de manières aléatoires).
 Explication : nous avons réussi à faire cela en parcourant nos salles et en y faisant apparaître des montres ou des pièges avec
-une certaine probabilité.
+une certaine probabilité.*
 
-Défi facile : gérer les fautes de frappes simples.
-Explication : nous avons realisé ceci en implémentant des conditions permettant de traîter chaque cas où nous devons taper quelque chose.
+*Défi facile : gérer les fautes de frappes simples.
+Explication : nous avons realisé ceci en implémentant des conditions permettant de traîter chaque cas où nous devons taper quelque chose.*
 
-Défi moyen : ajout de carte de manière textuelle.
-Explication : nous avons simplement affiché des traits que nous avons accumulé d'une manière précise afin de donner une carte visuelle.
+*Défi moyen : ajout de carte de manière textuelle.
+Explication : nous avons simplement affiché des traits que nous avons accumulé d'une manière précise afin de donner une carte visuelle.*
 
-Défi moyen : ajout d'une sauvegarde dans le jeu.
-Explication : nous avons procédé à une sauvegarde automatique du joueur lorsqu'on quitte le jeu, ceci a été réalisé en stockant les informations de la session de jeu actuelle dans un fichier.
+*Défi moyen : ajout d'une sauvegarde dans le jeu.
+Explication : nous avons procédé à une sauvegarde automatique du joueur lorsqu'on quitte le jeu, ceci a été réalisé en stockant les informations de la session de jeu actuelle dans un fichier.*
 
-Défi moyen : intégration de puzzles textuels demandant de la réflexion.
+*Défi moyen : intégration de puzzles textuels demandant de la réflexion.
 Explication : nous avons ajouté la fonctionnalité qui est de de devoir taper un mot généré aléatoirement qui est relativement compliqué à écrire dans un temps imparti. Pour cela, nous piochons les mots aléatoirement dans notre fichier regroupant le texte.
-Nous l'affichons, puis nous donnons un temps au joueur pour réécrire le même mot. 
+Nous l'affichons, puis nous donnons un temps au joueur pour réécrire le même mot. *
 
-Défi difficile : génération automatique de la carte de manière aléatoire.
+*Défi difficile : génération automatique de la carte de manière aléatoire.
 Explication : la carte et les salles se génèrent de manière aléatoire à chaque fois que le jeu est lancé. Nous avons fait ceci avec la génération de fichier texte aléatoire contenant le contenu de la salle pour toutes les salles.*
 
 🚀 Comment lancer notre jeu ?
