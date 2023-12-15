@@ -64,3 +64,5 @@ Pour plonger dans l'aventure, compilez le fichier index.c et c'est parti ! 😊
 🕹️ Maintenant, vous pouvez profiter pleinement de notre jeu !
 
 🍀 Bonne chance et merci d'avoir parcouru ce readme.
+
+Crédits pour les auteurs : Lorenzo Vandenkoornhuyse et Berat Chatrain
