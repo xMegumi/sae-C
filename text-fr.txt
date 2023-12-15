@@ -97,15 +97,15 @@ La pièce, autrefois remplie de butin potentiel, est maintenant le témoin de vo
 En entrant dans la pièce, vous remarquez l'absence d'objets, preuve que vous avez réussi à récupérer tout ce qu'elle avait à offrir.
 
 // Choix direct
-Où veux-tu aller, en bas (b) ou à droite (d) ?
-Où veux-tu aller, en bas (b) ou à gauche (g) ?
-Où veux-tu aller, en haut (h) ou à droite (d) ?
-Où veux-tu aller, en haut (h) ou à gauche (g) ?
-Où veux-tu aller, en haut (h), en bas (b) ou à droite (d) ?
-Où veux-tu aller, en haut (h), en bas (b) ou à gauche (g) ?
-Où veux-tu aller, en bas (b), à gauche (g) ou à droite (d) ?
-Où veux-tu aller, en haut (h), à gauche (g) ou à droite (d) ?
-Où veux-tu aller, en bas (b), en haut (h), à gauche (g) ou à droite (d) ?
+Où veux-tu aller, en bas (b) ou à droite (d)? ('q' pour quitter)
+Où veux-tu aller, en bas (b) ou à gauche (g)? ('q' pour quitter)
+Où veux-tu aller, en haut (h) ou à droite (d)? ('q' pour quitter)
+Où veux-tu aller, en haut (h) ou à gauche (g)? ('q' pour quitter)
+Où veux-tu aller, en haut (h), en bas (b) ou à droite (d)? ('q' pour quitter)
+Où veux-tu aller, en haut (h), en bas (b) ou à gauche (g)? ('q' pour quitter)
+Où veux-tu aller, en bas (b), à gauche (g) ou à droite (d)? ('q' pour quitter)
+Où veux-tu aller, en haut (h), à gauche (g) ou à droite (d)? ('q' pour quitter)
+Où veux-tu aller, en bas (b), en haut (h), à gauche (g) ou à droite (d)? ('q' pour quitter)
 
 // Défaite
 Tu es mort.
@@ -141,3 +141,33 @@ Le boss a évité ton attaque
 Bravo! Vous avez gagné 
 
 Voulez-vous passer l’introduction ?
+1. Oui
+2. Non
+
+Vous donnez un coup de poing au monstre, mais votre poing rebondit contre lui !
+
+// trap mots
+Tu dois écrire ce mot pour esquiver le piège :
+Tu as pris trop de temps pour saisir le mot !
+Tu as réussi à esquiver le piège !
+Tu as mal saisi le mot !
+C@ractèr3
+Régénér3
+P@ssionné
+J@lousie
+Lé0p@rdi
+M@gique
+0xygèn3
+Pén0mbr3
+Qu@drillé
+S@tisfaire
+Vénér@ble
+Xén0phob3
+Y@chting
+Zèbr3
+Ecl@ir3r
+
+Entrez n'importe quelle lettre pour vous relever :
+Direction invalide. Veuillez entrer une direction valide.
+
+Joueur sauvegardé. Fin du jeu.
