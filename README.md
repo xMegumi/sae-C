@@ -1,24 +1,30 @@
-🚀 **Welcome to World War 4 - The Game!** 🎮
+🎮 **Welcome to World War 4: The Game!** ⚔️
 
 🎯 Goal and Mechanics:
 
-The mission? Locate the hidden bunker reserve among 25 unique rooms. Navigate these directions:
+Your mission? Uncover the bunker reserve hidden within 25 rooms.
 
-Up ⬆️
-Down ⬇️
-Left ⬅️
-Right ➡️
-Choose your character:
+Navigate using directional shortcuts:
 
-🧑 Human with 5 hearts, regenerating 2 at a time.
-🤖 Robot with 6 hearts, regenerating 1 at a time.
-Inside each room, you'll encounter:
+Up (u)
+Down (d)
+Left (l)
+Right (r)
+For an easy save, exit by typing 'q'. Your progress will auto-save.
 
-⚠️ Traps to dodge
+🧑‍🤖 Choose Your Character:
+
+Human (h): 5 hearts, regenerating 2 at once.
+Robot (r): 6 hearts, but regenerates one heart at a time.
+Inside each room:
+
+⚠️ Traps to evade
 🦹 Monsters to confront
-🎁 Chests that hold 1-2 hearts or a weapon.
-The reserve harbors an epic monster, the final boss 🐉. But, you can't defeat it barehanded! Find the chest containing the weapon 🔫. Once equipped, battle the boss who has 3 hearts.
+🎁 Chests may contain 1-2 hearts or a weapon.
+The reserve holds an epic final boss 🐉. To defeat it, find the chest holding a weapon 🔫. Once equipped, face the boss with 3 hearts.
 
-Not explained in the game is the need for the weapon - discovery is part of the adventure! Defeating the boss means you win 🏆.
+Game tip: The weapon is the key to winning, but it's a discovery for players to uncover!
+
+Eliminate the final boss to claim victory 🏆!
 
 Thank you for reading! Good luck in World War 4!
