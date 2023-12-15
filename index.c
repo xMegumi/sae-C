@@ -4,8 +4,12 @@
 #include <time.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <ctype.h>
+#include <sys/select.h>
 
 #define MAX 5
+#define DELAY_LIMIT 5
 
 typedef struct
 {
@@ -41,6 +45,7 @@ typedef int array[2];
 
 position position_boss;
 
+// Function to generate random values for a room
 void random_room_values(room *r)
 {
     int result;
@@ -67,6 +72,7 @@ void random_room_values(room *r)
     (*r).boss = 0;
 }
 
+// Function to calculate the number of doors in a room based on its position
 int door_count(int row, int column)
 {
     int door_count_output = 0;
@@ -85,6 +91,7 @@ int door_count(int row, int column)
     return door_count_output;
 }
 
+// Function to display text character by character with a delay
 void display_text(char *texte)
 {
     printf("\n");
@@ -98,6 +105,13 @@ void display_text(char *texte)
     printf("\n");
 }
 
+// use to clear the inputs
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+}
+
+// Function to create a new room
 room create_room(int row, int column)
 {
     room new_room;
@@ -121,6 +135,7 @@ room create_room(int row, int column)
     return new_room;
 }
 
+// Function to create a reserve room with special properties
 void create_reserve(room_array *room_array)
 {
     int random_number = rand() % 24 + 1; 
@@ -134,6 +149,7 @@ void create_reserve(room_array *room_array)
     position_boss.column = random_number % MAX;
 }
 
+// Function to generate a sword in a room with a chest
 void generate_sword(room_array *rooms) {
     position room_position = {-1, -1};
 
@@ -151,6 +167,7 @@ void generate_sword(room_array *rooms) {
         (*rooms)[room_position.row][room_position.column].monster = 1;
 }
 
+// Function to create all rooms in the game
 void create_rooms(room_array *room_array)
 {
     room(*rooms)[MAX] = room_array;
@@ -167,6 +184,7 @@ void create_rooms(room_array *room_array)
     generate_sword(*room_array);
 }
 
+// Function to display the layout of a room
 void display_room( int room_row, int room_column)
 {
     for (int row = 0; row < MAX; row++)
@@ -197,6 +215,7 @@ void display_room( int room_row, int room_column)
     }
 }
 
+// Function to display player information
 void show_player(Player player)
 {
     printf("\nnationality : %c, name : %s, race : %c, heart : %i, weapon : , position : %i - %i \n",
@@ -204,6 +223,7 @@ void show_player(Player player)
            player.player_position.row, player.player_position.column);
 }
 
+// Function to display the player's health bar
 void show_health_bar(int hearts) {
 
 
@@ -221,6 +241,7 @@ void show_health_bar(int hearts) {
     printf("]\033[0m\n"); // Réinitialisation de la couleur
 }
 
+// Function to print details of a room
 void print_room(room r)
 {
     printf("Room %d / %d-%d - Trap: %hu, Chest: %hu, chest content : %hu, Door count: %hu, Monster: %hu, Boss: %hu, Reserve: %hu\n",
@@ -228,11 +249,13 @@ void print_room(room r)
            r.chest, r.chest_content, r.door_count, r.monster, r.boss, r.reserve);
 }
 
+// Function to play a sound (emit a beep)
 void play_sound()
 {
     printf("\a"); // Emit a control character to generate a beep
 }
 
+// Function to read a specific line from a file
 char *get_line(const char *filename, int desired_line_number)
 {
     FILE *file = fopen(filename, "r");
@@ -280,6 +303,7 @@ char *get_line(const char *filename, int desired_line_number)
     fclose(file);
 }
 
+// Function to display content from specific lines in a file
 int between_lines(int start, int end, char filename[30])
 {
     // Read the content of the file "filename" between the start and end
@@ -290,6 +314,7 @@ int between_lines(int start, int end, char filename[30])
     }
 }
 
+// Function to display the game introduction in a selected language
 void display_introduction(char *language)
 {
     if (strcmp(language, "en") == 0|| strcmp(language, "EN") == 0) {
@@ -328,6 +353,7 @@ void display_introduction(char *language)
     }
 }
 
+// Function to generate a sentence from a file based on a specified type
 char *generate_sentence(int type, const char *filename)
 {
     int line_number;
@@ -377,6 +403,7 @@ char *generate_sentence(int type, const char *filename)
     return sentence;
 }
 
+// Function to create a file with specific content based on room properties
 void create_room_folder(char *folder_name, room *room, char *language)
 {
     FILE *folder = fopen(folder_name, "w");
@@ -431,6 +458,7 @@ void create_room_folder(char *folder_name, room *room, char *language)
     fclose(folder);
 }
 
+// Function to create a position object with given row and column
 position create_position(int row, int column)
 {
     position *position_p = malloc(sizeof(position));
@@ -450,14 +478,82 @@ position create_position(int row, int column)
     return *position_p;
 }
 
-char direct_room(Player player, const char *langue[11])
+void save_player(Player joueur)
+{
+    
+    FILE *fichier = fopen("save.txt", "w");
+
+    if (fichier != NULL)
+    {
+        
+        fprintf(fichier, "Nom: %s\n", joueur.nom);
+        fprintf(fichier, "Nationalite: %c\n", joueur.nationalite);
+        fprintf(fichier, "Race: %c\n", joueur.race);
+        fprintf(fichier, "Hearts: %d\n", joueur.hearts);
+        fprintf(fichier, "Weapon: %hu\n", joueur.weapon);
+        fprintf(fichier, "Position: (%d, %d)\n", joueur.player_position.row, joueur.player_position.column);
+
+        
+        fclose(fichier);
+    }
+}
+
+Player load_player()
+{
+    Player joueur; 
+
+
+    FILE *fichier = fopen("save.txt", "r");
+
+    if (fichier != NULL)
+    {
+        fscanf(fichier, "Nom: %s\n", joueur.nom);
+        fscanf(fichier, "Nationalite: %c\n", &joueur.nationalite);
+        fscanf(fichier, "Race: %c\n", &joueur.race);
+        fscanf(fichier, "Hearts: %d\n", &joueur.hearts);
+        fscanf(fichier, "Weapon: %hu\n", &joueur.weapon);
+        fscanf(fichier, "Position: (%d, %d)\n", &joueur.player_position.row, &joueur.player_position.column);
+
+
+        fclose(fichier);
+
+        return joueur;
+    }
+}
+
+void save_room(room_array rooms) {
+    FILE *file = fopen("rooms.dat", "wb"); 
+
+    if (file != NULL) {
+        fwrite(rooms, sizeof(room), MAX * MAX, file); 
+        fclose(file); 
+    } else {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+    }
+}
+
+void load_room(room_array rooms) {
+    FILE *file = fopen("rooms.dat", "rb"); 
+
+    if (file != NULL) {
+        fread(rooms, sizeof(room), MAX * MAX, file); 
+        fclose(file); 
+    } else {
+        printf("Erreur lors de l'ouverture du fichier.\n");
+    }
+}
+
+// Function to get player's input for room direction
+char direct_room(Player player, const char *langue[11], room_array rooms) 
 {
     char direct;
     int id_room = (player.player_position.row * MAX) + player.player_position.column;
     int valid_input = 0;
+    int scan_result;
 
-    while (!valid_input )
-    {
+    while (!valid_input) {
+        
+
         switch (id_room)
         {
         case 0:
@@ -517,30 +613,41 @@ char direct_room(Player player, const char *langue[11])
             break;
         }
 
+        scan_result = scanf(" %c", &direct);
+        clear_input_buffer();
 
-        int scan_result = scanf(" %c", &direct);
+        
 
-        if (scan_result == 1)
-        {
-            valid_input = 1; // Mettre à jour le drapeau pour sortir de la boucle
-        }
-        else
-        {
-            printf("Invalid input. Please enter a valid direction.\n");
-            // Nettoyer le buffer pour éviter les boucles infinies en cas d'entrée incorrecte
-            while (getchar() != '\n')
-                ;
+        if (scan_result == 1) {
+            if (direct == 'q' || direct == 'Q') {
+                save_player(player);
+                save_room(rooms);
+                printf("Saving progress: ");
+
+                printf("[");
+                for (int progress = 0; progress <= 100; progress += 10) {
+                    printf("#");
+                    fflush(stdout); 
+                    usleep(200000); 
+                }
+                printf("]\n\n");
+                exit(0); 
+            } else {
+                valid_input = 1; 
+            }
         }
     }
+
     return direct;
+
 }
 
-void change_room(Player *player, const char *language) {
+// Function to change player's position based on direction input
+void change_room(Player *player, const char *language, room_array rooms) {
     Player player1 = *player;
 
-    char direction = direct_room(player1, language);
+    char direction = direct_room(player1, language, rooms);
 
-    // Mise à jour de la position du joueur en fonction de la direction
     if (strcmp(language, "text-fr.txt") == 0) {
         if (direction == 'D' || direction == 'd') player->player_position.column += 1;
         if (direction == 'B' || direction == 'b') player->player_position.row += 1;
@@ -566,16 +673,17 @@ void change_room(Player *player, const char *language) {
     }
 
 
-    // Affichage de la nouvelle position du joueur
     display_room(player->player_position.row, player->player_position.column);
 }
 
+// Function to handle game over scenario
 void game_over(char language[11]) {
-    printf("\n========================================\n");
+    printf("\n===========================\n");
     printf("%s\n", get_line(language, 111));
-    printf("========================================\n");
+    printf("=============================\n");
 }
 
+// Function to check if game over conditions are met
 int check_game_over(Player *player) {
     int output = 0;
     if (player->hearts == 0) {
@@ -585,6 +693,7 @@ int check_game_over(Player *player) {
     return output; // Pas de Game Over
 }
 
+// Function to remove a heart from player (health decrement)
 void remove_heart(Player *player, const char language[11]) {
     
     if (player->hearts > 0) {
@@ -599,6 +708,7 @@ void remove_heart(Player *player, const char language[11]) {
     }
 }
 
+// Function to add a heart to player (health increment)
 void add_heart(Player *player, const char language[11]) {
     if (player->hearts < MAX) {
         player->hearts += 1;
@@ -610,12 +720,11 @@ void add_heart(Player *player, const char language[11]) {
 
 
 
-
-void fight_monster(Player *player, room *room, char *language)
+// Function to handle monster encounters in rooms
+int fight_monster(Player *player, room *room, char *language)
 {   
-
     int choice_monster;
-    int prob_attack;
+    int prob_attack, output=1;
     FILE *folder = fopen(language, "r");
     
 
@@ -628,16 +737,18 @@ void fight_monster(Player *player, room *room, char *language)
 
             
             // If there is a boss in the room display
-            printf("%s\n", get_line(language, 124));
-            printf("%s\n", get_line(language, 125));
-            printf("%s\n", get_line(language, 126));
-            printf("%s\n", get_line(language, 127));
-            scanf("%i", &choice_monster);
-            getchar();
+            do {
+                printf("%s\n", get_line(language, 124));
+                printf("%s\n", get_line(language, 125));
+                printf("%s\n", get_line(language, 126));
+                printf("%s\n", get_line(language, 127));
+                scanf("%i", &choice_monster);
+            }while (choice_monster != 1 && choice_monster != 2);
 
             // If choice of player is to run
             if(choice_monster == 2)
             {
+                output = 0;
                 break;
             }
 
@@ -645,7 +756,7 @@ void fight_monster(Player *player, room *room, char *language)
             if(choice_monster == 1 )
             {
                 srand(time(NULL));
-                prob_attack = rand() % 3;
+                prob_attack = rand() % 2;
                 
                 if (prob_attack == 0)
                 {
@@ -662,13 +773,14 @@ void fight_monster(Player *player, room *room, char *language)
                 }
             }
             }
-
+            return output;
             fclose(folder);            
         }
     }
 }
 
-void fight_boss(Player *player, room *room, char language[11]) {
+// Function to handle boss encounters in rooms
+int fight_boss(Player *player, room *room, char language[11]) {
     int boss_hearts = 2;
     int choice_monster;
     int prob_attack;
@@ -706,14 +818,19 @@ void fight_boss(Player *player, room *room, char language[11]) {
                         printf("%s\n", get_line(language, 140));
                         remove_heart(player, language);
                     }
+                } else {
+                    printf("%s\n", get_line(language, 147));
+                    printf("%s\n", get_line(language, 140));
+                    remove_heart(player, language);
                 }
             }
         }
     }
+
     fclose(folder);
 }
 
-
+// Function to handle chest content interactions in rooms
 void chest_content(Player *player, room *room, char *language)
 {
     int choice;
@@ -737,13 +854,13 @@ void chest_content(Player *player, room *room, char *language)
         {
             if (room->chest_content == 1)
             {
-                printf("%s\n", get_line(language, 118)); // Displaying the line that he got a heart
-                add_heart(player, language); // Adding one heart to player
+                printf("%s\n", get_line(language, 118)); 
+                add_heart(player, language); 
             }
             else
             {
-                printf("%s\n", get_line(language, 117)); // Displaying the line that he got a gun
-                player->weapon = 1; // Adding one gun to player gun slot
+                printf("%s\n", get_line(language, 117)); 
+                player->weapon = 1; 
             }
             room->chest = 0;
         }
@@ -752,9 +869,128 @@ void chest_content(Player *player, room *room, char *language)
     fclose(folder);
 }
 
+
+
+
+int attendreSaisie(const char *filename) {
+    int output = 0;
+
+    fd_set fds;
+    FD_ZERO(&fds);
+    FD_SET(STDIN_FILENO, &fds);
+
+    struct timeval tv;
+    tv.tv_sec = DELAY_LIMIT;
+    tv.tv_usec = 0;
+
+    int ret = select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);
+
+    if (ret == -1) {
+        perror("select");
+        output = -1;
+    } else if (ret == 0) {
+        display_text(get_line(filename, 151));
+        output = 0;
+    } else {
+        output = 1;
+    }
+
+    return output;
+}
+
+char *generate_word_trap(const char *filename) {
+    int line_number;
+    char *sentence = malloc(1024 * sizeof(char)); // Allocation de mémoire pour la phrase
+
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        fprintf(stderr, "Error opening file %s\n", filename);
+        exit(EXIT_FAILURE);
+    }
+
+    line_number = rand() % (168 - 154 + 1) + 154;
+    char *line = get_line(filename, line_number);
+    strcpy(sentence, line); 
+    free(line); 
+
+    fclose(file);
+    return sentence;
+}
+
+
+
+int trap_game(const char *filename) {
+    char *word = generate_word_trap(filename);
+    display_text(get_line(filename, 150));
+    printf("%s\n", word);
+    fflush(stdout);
+
+    int saisieAttendue = attendreSaisie(filename);
+    int output = 0;
+
+    if (saisieAttendue == 1) {
+        char valeurSaisie[1024];
+
+        if (scanf("%s", valeurSaisie) != 1) {
+            display_text(get_line(filename, 153));
+            output = 1;
+        } else {
+
+            char normalizedValeurSaisie[1024];
+            char normalizedWord[1024];
+
+            int i = 0, j = 0;
+            while (valeurSaisie[i]) {
+                if (isalnum(valeurSaisie[i])) {
+                    normalizedValeurSaisie[j++] = tolower(valeurSaisie[i]);
+                }
+                i++;
+            }
+            normalizedValeurSaisie[j] = '\0';
+
+            i = 0, j = 0;
+            while (word[i]) {
+                if (isalnum(word[i])) {
+                    normalizedWord[j++] = tolower(word[i]);
+                }
+                i++;
+            }
+            normalizedWord[j] = '\0';
+
+            i = 0;
+            while (normalizedValeurSaisie[i] && normalizedWord[i]) {
+                if (normalizedValeurSaisie[i] != normalizedWord[i]) {
+                    display_text(get_line(filename, 153));
+                    output = 1;
+                    break;
+                }
+                i++;
+            }
+
+            if (!output && normalizedValeurSaisie[i] != normalizedWord[i]) {
+                display_text(get_line(filename, 153));
+                output = 1;
+            } else {
+                if (normalizedValeurSaisie[i] == '\0' && normalizedWord[i] == '\0') {
+                display_text(get_line(filename, 152));
+                }
+            }
+        }
+    } else {
+        output = 1;
+    }
+
+    free(word);
+    putchar('\n');
+    return output;
+}
+
+// Function to handle room protocol including various interactions
 void protocol_room(char *folder_name, room *room, Player *player , char *language)
 {
-    int temporary_monster = 0;
+    int trap_win;
+    int temporary_monster = 0, temporary_trap = 0;
+    int choice_monster = 1;
     FILE *folder = fopen(folder_name, "r");
 
     if (folder == NULL)
@@ -767,32 +1003,35 @@ void protocol_room(char *folder_name, room *room, Player *player , char *languag
 
     if (room->boss != 1)
     {
-        if (room->trap == 1 && check_game_over(&player) == 0)
+        if (room->trap == 1 && check_game_over(player) == 0)
         {
             
             display_text(get_line(folder_name, 2));
             display_text(get_line(language, 130));
-            remove_heart(player, language);
+            trap_win = trap_game(language);
+            if (trap_win == 1) remove_heart(player, language);
             show_health_bar(player->hearts);
             sleep(1);
+            room->trap = 0;
+            temporary_trap = 1;
         }
 
-        if (room->monster == 1 && check_game_over(&player) == 0) 
+        if (room->monster == 1 && check_game_over(player) == 0) 
         {
-            if (room->trap == 1) display_text(get_line(folder_name, 3));
+            if (temporary_trap == 1) display_text(get_line(folder_name, 3));
             else display_text(get_line(folder_name, 2));
-            fight_monster(player, room, language);
+            choice_monster = fight_monster(player, room, language);
             temporary_monster = 1;
             show_health_bar(player->hearts);
             sleep(1);
         }
 
-        if (room->chest == 1 && check_game_over(&player) == 0)
+        if (room->chest == 1 && check_game_over(player) == 0 && choice_monster != 0)
         {
 
-            if (room->trap == 1 && temporary_monster == 1) printf("%s \n", get_line(folder_name, 4));
-            if (room->trap == 1 && temporary_monster == 0 || room->trap == 0 && temporary_monster == 1) printf("%s \n", get_line(folder_name, 3));
-            if (room->trap == 0 && temporary_monster == 0) printf("%s \n", get_line(folder_name, 2));
+            if (temporary_trap == 1 && temporary_monster == 1) printf("%s \n", get_line(folder_name, 4));
+            if (temporary_trap == 1 && temporary_monster == 0 || temporary_trap == 0 && temporary_monster == 1) printf("%s \n", get_line(folder_name, 3));
+            if (temporary_trap == 0 && temporary_monster == 0) printf("%s \n", get_line(folder_name, 2));
 
             chest_content(player, room, language);
             show_health_bar(player->hearts);
@@ -805,17 +1044,17 @@ void protocol_room(char *folder_name, room *room, Player *player , char *languag
         fight_boss(player, room, language);
     }
 
-    if (room->trap != 1 && room->boss != 1 && room->monster != 1 && room->chest != 1)
+    if (temporary_trap != 1 && room->boss != 1 && room->monster != 1 && room->chest != 1)
     {
-        // display the empty room message
         display_text(get_line(language, 88));
     }
 
-    room->trap = 0;
+    
 
     fclose(folder);
 }
 
+// Function to create a player and initialize properties
 void create_player(Player *new_player, const char *file)
 {
     FILE *in_file = fopen(file, "r");
@@ -850,6 +1089,7 @@ void create_player(Player *new_player, const char *file)
 
 }
 
+// Function to determine the language file based on input
 char *get_language(const char nom[3])
 {
     char *languages = malloc(30);
@@ -871,17 +1111,22 @@ char *get_language(const char nom[3])
     return languages;
 }
 
+
+
+
+// Function to play the game
 int play_game(char lang[3]) 
 {
-    int user_choice = 0, game_choice = 0;
+    int user_choice = 0, game_choice = 0, intro_choice = 0;
     char sentence[100], folder[10];
     room_array rooms;
     Player new_player;
-    char exit[10], direct[1], room_name[10]; // Increase the size of 'language' to store "fr" or "en"
-    const char *file = "text-en.txt";  // Default to using the English file
+    char exit[10], direct[1], room_name[10]; 
+    const char *file = "text-en.txt";  
     FILE *in_file = fopen(file, "r");
+    
 
-    srand(time(NULL)); // Initialize the random number generator with the current time
+    srand(time(NULL)); 
 
     do {
 
@@ -909,8 +1154,15 @@ int play_game(char lang[3])
         // Display menu
         while (1)
         {
+            do {
             display_introduction(lang);
-            scanf("%i", &game_choice);
+        
+            if (scanf("%i", &game_choice) != 1) {
+                // Si l'entrée n'est pas un entier, nettoyez le flux d'entrée
+                while (getchar() != '\n'); 
+            }
+
+        } while (game_choice != 1 && game_choice != 2 && game_choice != 3);
 
             switch (game_choice)
             {
@@ -958,16 +1210,16 @@ int play_game(char lang[3])
                 between_lines(31, 34, get_language(lang));
 
                 free(file_allocation);
+                break;
             }
-            
+            break;
 
         }
 
         while (!check_game_over(&new_player) && rooms[position_boss.row][position_boss.column].boss == 1) {
-            change_room(&new_player, get_language(lang));
+            change_room(&new_player, get_language(lang), rooms);
             sprintf(room_name, "room%d", (new_player.player_position.row * MAX) + new_player.player_position.column );
             protocol_room(&room_name, &rooms[new_player.player_position.row][new_player.player_position.column], &new_player, get_language(lang));
-            show_player(new_player);
         }
 
         // Affichage du joueur et libération de la mémoire
@@ -978,6 +1230,15 @@ int play_game(char lang[3])
                 break;
 
             case 2:
+                
+                new_player = load_player();
+                load_room(rooms);
+                show_player(new_player);
+                while (!check_game_over(&new_player) ) {
+                    change_room(&new_player, get_language(lang), rooms);
+                    sprintf(room_name, "room%d", (new_player.player_position.row * MAX) + new_player.player_position.column);
+                    protocol_room(&room_name, &rooms[new_player.player_position.row][new_player.player_position.column], &new_player, get_language(lang));
+                }
                 break;
 
             case 3:
@@ -1005,8 +1266,17 @@ int main(int argc, char *argv[])
     char exit[10], lang[3];
     
     do {
-        printf("Choose your lang (fr) or (en): ");
-        scanf("%2s", lang);
+        while(strcmp(lang, "fr") != 0 && strcmp(lang, "FR") != 0 && strcmp(lang, "en") != 0 && strcmp(lang, "EN") != 0)
+        {
+        printf("Choose your language (fr) or (en): "); 
+        scanf("%s", lang);
+
+        if (strcmp(lang, "fr") != 0 && strcmp(lang, "FR") != 0 && strcmp(lang, "en") != 0 && strcmp(lang, "EN") != 0)
+        {
+            printf("Error of typing\n");
+        }
+
+        }
 
         play_game(lang);    
 
