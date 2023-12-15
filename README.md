@@ -27,4 +27,5 @@ Game tip: The weapon is the key to winning, but it's a discovery for players to 
 
 Eliminate the final boss to claim victory 🏆!
 
-Thank you for reading! Good luck in World War 4!
+Thank you for reading!
+Good luck in **World War 4**!
